@@ -1,0 +1,34 @@
+<div id="social-area" data-ng-init="getSocialData()">
+	<div id="social-save-results">
+		<h4>Adicionado:</h4>
+		<form class="well form-inline" name="SocialForm">
+			<div class="social-item" data-ng-repeat="social in social_links">
+				<input type="text" class="input-xsmall input-text-social-name" placeholder="Nome" data-ng-model="social.name" value="{{social.name}}">
+			    <input type="text" class="input-xsmall input-text-social-link" placeholder="Link" data-ng-model="social.link" value="{{social.link}}">
+			    <button type="submit" class="btn btn-success" data-ng-click="update(social.id, social)">
+			      Salvar
+			    </button>
+			    <button type="submit" class="btn btn-danger" data-ng-click="delete(social.id, social)">
+			      Deletar
+			    </button>
+			    <div class="space"></div>      
+			</div>
+		</form>
+	</div>
+
+	<div class="space"></div>
+	      
+	<div id="social-add">
+		<h4>Adicionar novo:</h4>
+		<form class="well form-inline" name="SocialFormAdd" data-ng-init="clear()">
+			<input type="text" class="input-xsmall input-text-social-name" placeholder="Nome" data-ng-model="new_social.name" required>
+			<input type="text" class="input-xsmall input-text-social-link" placeholder="Link" data-ng-model="new_social.link" required>
+			<button type="submit" class="btn btn-success" data-ng-disabled="SocialFormAdd.$invalid" data-ng-click="create()">
+			  Adicionar
+			</button>
+			<button type="submit" class="btn btn-danger" data-ng-disabled="SocialFormAdd.$invalid" data-ng-click="clear()">
+			  Limpar
+			</button>
+		</form>
+	</div>
+</div>

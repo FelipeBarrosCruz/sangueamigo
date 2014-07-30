@@ -1,0 +1,52 @@
+<div id="front">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="makesense center">
+          <h3>A maneira mais fácil de você encontrar um doador!</h3>
+          <h4>Ajude a salvar vidas, doar sangue é doar vida!</h4>
+        </div>
+      </div>
+    </div>
+    <div class="space"></div>
+  </div>
+</div>
+<!--/#front-->
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <div class="well">
+          <ul class="nav nav-list">
+            <li class="nav-header"> Menu </li>
+            <li ng-class="{ active: isActiveMenu(1) }">
+              <a ng-click="setMenu(1)">
+                <i class="fa fa-search fa-1x"></i> Buscar doador
+              </a>
+            </li>
+            <li ng-class="{ active: isActiveMenu(2) }">
+              <a ng-click="setMenu(2)">
+                <i class="fa fa-user fa-1x"></i> Meus dados
+              </a>
+            </li>
+            <li ng-class="{ active: isActiveMenu(3) }">
+              <a ng-click="setMenu(3)">
+                <i class="fa fa-cogs fa-1x"></i> Histórico
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+      <search ng-show="isActiveMenu(1)"></search>
+      <div class="row" ng-show="isActiveMenu(2)">
+        <profile></profile>
+      </div>
+      <statistic ng-show="isActiveMenu(3)"></statistic> 
+    
+    </div>
+    <div class="space"></div>
+    <div class="hr"></div>
+    <div class="space"></div> 
+  </div>
+</div>

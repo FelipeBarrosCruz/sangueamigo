@@ -1,0 +1,107 @@
+<div class="span8">
+  <div class="border-solid box-padding step-container">
+    <h3>
+      Pesquisa de doador.
+      <p class="help-block">Informe os dados a seguir para uma melhor busca.</p>
+    </h3>
+    
+    <form name="searchForm" class="well form-inline">
+      <input type="text" class="input-xsmall input-text-search" data-ng-model="state" placeholder="Estado" required>
+      <input type="text" class="input-xsmall input-text-search" data-ng-model="city" placeholder="Cidade" required>
+      <select class="select-search" data-ng-model="blood_type"  data-ng-options="blood.value as blood.name for blood in blood_types" required>
+        <option value="">Tipo Sanguineo</option>
+      </select>
+      <button type="submit" class="btn btn-warning" ng-disabled="searchForm.$invalid" data-ng-click="search()">
+        Pesquisar
+      </button>
+    </form>
+    
+    <div class="space"></div>
+
+    <div id="search-result" data-ng-hide="selected">
+      <div class="alert alert-success" data-ng-show="total">
+        Ola você teve {{total}} resultados, boa sorte!
+      </div>
+      <div class="alert alert-error" data-ng-show="total == 0">
+        Nenhum resultado encontrato, verifique a ortográfia do estado e cidade.
+      </div>
+
+      <div id="table-search-result" data-ng-show="total">
+        <table class="table table-bordered ng-table-responsive" ng-table="tableParams">
+            <tr ng-repeat="user in $data">
+              <td data-title="'Nome'">
+                  {{user.name}}
+              </td>
+              <td data-title="'Tipo Sanguineo'">
+                  {{user.blood_type}}
+              </td>
+              <td class="text-center" data-title="'Contato'">
+                <button data-ng-click="showContact(user.id)" class="btn btn-primary">Contato</button>
+              </td>
+            </tr>
+        </table>
+      </div>
+    </div>  <!-- END SEARCH RESULT -->
+
+    <!-- USER INFORMATIONS -->
+    <div id="user-selected" data-ng-show="selected">
+        <a class="close pull-right" data-ng-click="backResults()">&times;</a>
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Informações do Doador:</legend>
+            <div class="control-group">
+              <label class="control-label">Nome</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge uneditable-input" data-ng-model="user.name">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Idade</label>
+                <div class="controls">
+                  <input type="text" class="input-xlarge uneditable-input" style="width: 50px;" data-ng-model="user.age">
+                </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">E-Mail</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge uneditable-input" data-ng-model="user.email">
+              </div>
+            </div>
+            <div class="control-group" data-ng-show="user.show_phone">
+              <label class="control-label">Telefone</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge uneditable-input" data-ng-model="user.phone">
+              </div>
+            </div>
+            
+
+            <!-- START SOCIAL LINKS -->
+            <div class="control-group" data-ng-repeat="social in user.social_links">
+              <label class="control-label">{{social.name}}</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <label for="" class="add-on">@
+                  </label><input type="text" class="input-text-social uneditable-input" value="{{social.link}}">
+                </div>
+              </div>
+            </div>
+            <!-- END SOCIAL LINKS -->
+
+          </fieldset>
+
+          <div class="text-center">
+            <button class="btn btn-primary" data-ng-click="like(user.id)">
+              <i class="fa fa-thumbs-up icon-white"></i>
+              Like
+            </button>
+
+            <button class="btn btn-primary" data-ng-click="dislike(user.id)">
+              <i class="fa fa-thumbs-down"></i>
+              Dislike
+            </button>
+          </div>
+        </form>
+    </div> <!-- END USER INFORMATIONS -->
+
+  </div>
+</div>

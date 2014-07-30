@@ -1,0 +1,108 @@
+<div class="span8">
+  <div class="border-solid box-padding step-container">
+
+    <ul class="nav nav-tabs">
+      <li data-ng-class="{ active: isActiveMenu(1) }">
+        <a data-ng-click="setMenu(1)">Geral</a>
+      </li>
+      <li data-ng-class="{ active: isActiveMenu(2) }">
+        <a data-ng-click="setMenu(2)">Redes Sociais</a>
+      </li>
+    </ul>
+
+    <h3>Seus Dados
+      <p class="help-block">Informe seus dados, por favor!</p>
+    </h3>
+
+    <div id="profile-general" data-ng-show="isActiveMenu(1)">
+       <form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="lastname">Email : </label>
+            <div class="controls">
+              <input class="input-xlarge focused" type="email" data-ng-model="user.email"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Nome : </label>
+            <div class="controls">
+              <input class="input-xlarge" type="text" data-ng-model="user.name" />
+            </div>
+          </div>
+          <div class="control-group" data-ng-show="user.show_number">
+            <label class="control-label">Telefone : </label>
+            <div class="controls">
+              <input class="input-xlarge" type="text" data-ng-model="user.phone" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Estado : </label>
+            <div class="controls">
+              <input class="input-xlarge" type="text" data-ng-model="user.state" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Cidade : </label>
+            <div class="controls">
+              <input class="input-xlarge" type="text" data-ng-model="user.city" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Idade : </label>
+            <div class="controls">
+              <input class="input-xlarge" type="text" data-ng-model="user.age" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="ppt">Gênero : </label>
+            <div class="controls">
+              <select data-ng-model="user.gender">
+                <option value="M">Masculino
+                <option value="F">Feminino
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="ppt">Tipo Sanguineo : </label>
+            <div class="controls">
+              <select data-ng-model="user.blood_type" data-ng-options="blood.value as blood.name for blood in blood_types">
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="optionsCheckboxList">
+              <b>Questionario:</b>
+            </label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" data-ng-model="user.has_donor">
+                Já doou sangue alguma vez? 
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" data-ng-model="user.show_phone">
+                Deseja deixar disponível o numero de telefone?
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" data-ng-model="user.newsletter">
+                Gostaria de receber informações de saúde publica no seu e-mail?</label>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-warning pull-left" data-ng-click="save()">
+              Salvar
+            </button>
+          </div>
+        </fieldset>
+      </form>  
+    </div>
+
+    <div id="profile-social-links" data-ng-show="isActiveMenu(2)">
+      
+      <social</social>
+
+
+    </div>
+
+
+  </div>
+</div>
